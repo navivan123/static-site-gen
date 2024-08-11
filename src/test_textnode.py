@@ -177,9 +177,8 @@ class TestTextNode(unittest.TestCase):
 
     def test_text_to_node(self):
         n = text_to_textnodes("`I start with code` But continue ![fox](c.com) with the *never* **ending** ![relentless](frick.png) prrrsuit of the *maybe* `rich` individuals saying shit like [notimg](nimg.com) that really fricks up my **banana**")
-        print()
-        for node in n:
-            print(f"{node}")
+
+        self.assertEqual("[TextNode(I start with code, code, None), TextNode( But continue , text, None), TextNode(fox, image, c.com), TextNode( with the , text, None), TextNode(never, italic, None), TextNode( , text, None), TextNode(ending, text, None), TextNode( , text, None), TextNode(relentless, image, frick.png), TextNode( prrrsuit of the , text, None), TextNode(maybe, italic, None), TextNode( , text, None), TextNode(rich, code, None), TextNode( individuals saying shit like , text, None), TextNode(notimg, link, nimg.com), TextNode( that really fricks up my , text, None), TextNode(banana, text, None)]",f"{n}")
 
 
     def test_print_all_convs(self):

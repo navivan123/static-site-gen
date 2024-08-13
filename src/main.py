@@ -3,7 +3,7 @@ import shutil
 
 from cpstatic import cp_dir
 
-from genpage import generate_page 
+from genpage import generate_page_recur
 
 dir_pub  = "./public"
 dir_stat = "./static"
@@ -22,9 +22,10 @@ def main():
     res = os.path.exists(dir_pub)
     print(f"Check that ./public was removed: {res}")
 
+    print(f"Copy files from static directory {dir_stat} to public directory {dir_pub}!")
     cp_dir(dir_stat, dir_pub)
-
-
-    generate_page(os.path.join(dir_cont, "index.md"), dir_temp, os.path.join(dir_pub, "index.html"))
+    
+    print(f"Generating all content from {dir_cont} to public directory {dir_pub}!")
+    generate_page_recur(dir_cont, dir_temp, dir_pub)
 
 main()

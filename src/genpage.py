@@ -2,6 +2,8 @@ from markdown import markdown_to_html_node
 
 import os
 
+from pathlib import Path
+
 def extract_title(markdown):
     
     lines = markdown.split("\n")
@@ -39,3 +41,18 @@ def generate_page(src_path, template_path, dst_path):
     fo = open(dst_path, "w")
     fo.write(html)
     fo.close()
+
+def generate_page_recur(src_path, template_path, dst_path):
+
+    for fn in os.listdir(src_path):
+        fp = os.path.join(src_path, fn)
+        dp = os.path.join(dst_path, fn)
+        
+        if os.path.isfile(fp):
+            dp = Path(dp).with_suffix(".html")
+            generate_page(fp, template_path, dp)
+        else:
+            generate_page_recur(fp, template_path, dp)
+
+        
+    

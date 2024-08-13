@@ -73,11 +73,13 @@ def text_node_to_html_node(text_node):
     return LeafNode(v1, v2, v3) 
 
 def split_nodes_delimiter(old_nodes, delimiter, text_type):
-    
     new_nodes = []
+
+    
     
     for node in old_nodes:
         
+
         if node.text_type != "text":
             new_nodes.append(node)
             continue
@@ -96,7 +98,7 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
 
             else:
                 new_nodes.append(TextNode(a[i], text_type))
-        
+
     return new_nodes
 
 def extract_markdown_images(text):
@@ -188,8 +190,8 @@ def split_nodes_link(old_nodes):
 
 def text_to_textnodes(text):
     n = [TextNode(text, "text")]
-    n = split_nodes_delimiter(n, "*", "italic")
     n = split_nodes_delimiter(n, "**", "bold")
+    n = split_nodes_delimiter(n, "*", "italic")
     n = split_nodes_delimiter(n, "`", "code")
     n = split_nodes_image(n)
     return split_nodes_link(n)

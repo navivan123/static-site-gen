@@ -67,11 +67,11 @@ class TestHTMLNode(unittest.TestCase):
     def test_print_stuff(self):
         a = LeafNode(tag = None, value = "Stuff", props = None)
         b = ParentNode(tag = "p", children = [a], props = {"id" : "p1"})
-        print()
-        print()
-        print("Printing Example ParentNode")
-        print(b)
-        print()
+#       print()
+#       print()
+#       print("Printing Example ParentNode")
+#       print(b)
+#       print()
 
 if __name__ == "__main__":
     unittest.main()

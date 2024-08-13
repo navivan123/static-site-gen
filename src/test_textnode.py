@@ -178,48 +178,48 @@ class TestTextNode(unittest.TestCase):
     def test_text_to_node(self):
         n = text_to_textnodes("`I start with code` But continue ![fox](c.com) with the *never* **ending** ![relentless](frick.png) prrrsuit of the *maybe* `rich` individuals saying shit like [notimg](nimg.com) that really fricks up my **banana**")
 
-        self.assertEqual("[TextNode(I start with code, code, None), TextNode( But continue , text, None), TextNode(fox, image, c.com), TextNode( with the , text, None), TextNode(never, italic, None), TextNode( , text, None), TextNode(ending, text, None), TextNode( , text, None), TextNode(relentless, image, frick.png), TextNode( prrrsuit of the , text, None), TextNode(maybe, italic, None), TextNode( , text, None), TextNode(rich, code, None), TextNode( individuals saying shit like , text, None), TextNode(notimg, link, nimg.com), TextNode( that really fricks up my , text, None), TextNode(banana, text, None)]",f"{n}")
+        self.assertEqual("[TextNode(I start with code, code, None), TextNode( But continue , text, None), TextNode(fox, image, c.com), TextNode( with the , text, None), TextNode(never, italic, None), TextNode( , text, None), TextNode(ending, bold, None), TextNode( , text, None), TextNode(relentless, image, frick.png), TextNode( prrrsuit of the , text, None), TextNode(maybe, italic, None), TextNode( , text, None), TextNode(rich, code, None), TextNode( individuals saying shit like , text, None), TextNode(notimg, link, nimg.com), TextNode( that really fricks up my , text, None), TextNode(banana, bold, None)]",f"{n}")
 
 
-    def test_print_all_convs(self):
-        print()
-        print()
-        print("Printing all text to html conversions!")
-        node = TextNode("Hello!", "text")
-        html_n = text_node_to_html_node(node) # Text
-        print(html_n.to_html())
-        print()
-        print()
+#   def test_print_all_convs(self):
+#       print()
+#       print()
+#       print("Printing all text to html conversions!")
+#       node = TextNode("Hello!", "text")
+#       html_n = text_node_to_html_node(node) # Text
+#       print(html_n.to_html())
+#       print()
+#       print()
 
-        node = TextNode("Hello!", "bold")
-        html_n = text_node_to_html_node(node) # Bold
-        print(html_n.to_html())
-        print()
-        print()
+#       node = TextNode("Hello!", "bold")
+#       html_n = text_node_to_html_node(node) # Bold
+#       print(html_n.to_html())
+#       print()
+#       print()
 
-        node = TextNode("Hello!", "italic")
-        html_n = text_node_to_html_node(node)
-        print(html_n.to_html())
-        print()
-        print()
+#       node = TextNode("Hello!", "italic")
+#       html_n = text_node_to_html_node(node)
+#       print(html_n.to_html())
+#       print()
+#       print()
 
-        node = TextNode("Hello!", "code")
-        html_n = text_node_to_html_node(node)
-        print(html_n.to_html())
-        print()
-        print()
+#       node = TextNode("Hello!", "code")
+#       html_n = text_node_to_html_node(node)
+#       print(html_n.to_html())
+#       print()
+#       print()
 
-        node = TextNode("Click here to go to Google!", "link", "www.google.com")
-        html_n = text_node_to_html_node(node)
-        print(html_n.to_html())
-        print()
-        print()
+#       node = TextNode("Click here to go to Google!", "link", "www.google.com")
+#       html_n = text_node_to_html_node(node)
+#       print(html_n.to_html())
+#       print()
+#       print()
 
-        node = TextNode("Hello-img", "image", "www.google.com/img.img")
-        html_n = text_node_to_html_node(node)
-        print(html_n.to_html())
-        print()
-        print()
+#       node = TextNode("Hello-img", "image", "www.google.com/img.img")
+#       html_n = text_node_to_html_node(node)
+#       print(html_n.to_html())
+#       print()
+#       print()
 #
 #    def test_text_conv_bold(self):
 #        node = TextNode("Hello!", "bold")

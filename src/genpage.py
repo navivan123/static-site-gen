@@ -14,7 +14,7 @@ def extract_title(markdown):
 
     raise Exception("Markdown does not have title!")
 
-def generate_page(src_path, template_path, dst_path):
+def generate_page(src_path, template_path, dst_path, basepath):
     
     print(f"Generating page from {src_path} to {dst_path} using {template_path}!")
 
@@ -34,6 +34,12 @@ def generate_page(src_path, template_path, dst_path):
     ba_content = html.split("{{ Content }}")
     html = ba_content[0] + html_body + ba_content[1]
 
+    # Replace href="/" with href="{basepath}"
+    html = html.replace('href="/', f'href="{basepath}')
+
+    # Replace src="/" with src="{basepath}"
+    html = html.replace('src="/', f'src="{basepath}')
+
     dest = os.path.dirname(dst_path)
     if dest != "":
         os.makedirs(dest, exist_ok=True)
@@ -42,7 +48,7 @@ def generate_page(src_path, template_path, dst_path):
     fo.write(html)
     fo.close()
 
-def generate_page_recur(src_path, template_path, dst_path):
+def generate_page_recur(src_path, template_path, dst_path, basepath):
 
     for fn in os.listdir(src_path):
         fp = os.path.join(src_path, fn)
@@ -50,9 +56,9 @@ def generate_page_recur(src_path, template_path, dst_path):
         
         if os.path.isfile(fp):
             dp = Path(dp).with_suffix(".html")
-            generate_page(fp, template_path, dp)
+            generate_page(fp, template_path, dp, basepath)
         else:
-            generate_page_recur(fp, template_path, dp)
+            generate_page_recur(fp, template_path, dp, basepath)
 
         
     

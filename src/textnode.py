@@ -5,7 +5,7 @@ import re
 
 text_type_text   = "text"   # Markdown: nothing, duh!
 text_type_bold   = "bold"   # Markdown: **
-text_type_italic = "italic" # Markdown: *
+text_type_italic = "italic" # Markdown: * | _
 text_type_code   = "code"   # Markdown: `
 text_type_link   = "link"   # Markdown: []()
 text_type_image  = "image"  # Markdown: ![]()
@@ -74,12 +74,9 @@ def text_node_to_html_node(text_node):
 
 def split_nodes_delimiter(old_nodes, delimiter, text_type):
     new_nodes = []
-
-    
     
     for node in old_nodes:
         
-
         if node.text_type != "text":
             new_nodes.append(node)
             continue
@@ -192,6 +189,7 @@ def text_to_textnodes(text):
     n = [TextNode(text, "text")]
     n = split_nodes_delimiter(n, "**", "bold")
     n = split_nodes_delimiter(n, "*", "italic")
+    n = split_nodes_delimiter(n, "_", "italic")
     n = split_nodes_delimiter(n, "`", "code")
     n = split_nodes_image(n)
     return split_nodes_link(n)

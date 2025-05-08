@@ -190,6 +190,7 @@ def text_to_textnodes(text):
     n = split_nodes_delimiter(n, "**", "bold")
     n = split_nodes_delimiter(n, "*", "italic")
     n = split_nodes_delimiter(n, "_", "italic")
+    n = split_nodes_delimiter(n, "__", "bold")
     n = split_nodes_delimiter(n, "`", "code")
     n = split_nodes_image(n)
     return split_nodes_link(n)
